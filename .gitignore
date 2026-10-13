@@ -1,0 +1,29 @@
+# Dependencies
+node_modules/
+
+# Build output and generated types
+dist/
+.astro/
+
+# Environment files may contain secrets; only the example is committed
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+
+# Test reports
+coverage/
+playwright-report/
+test-results/
+
+# Editors: shared VS Code settings are committed, personal ones are not
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+
+# Operating system files
+.DS_Store
+Thumbs.db
