@@ -14,7 +14,19 @@ guessing.
 - TypeScript everywhere.
 - Tailwind CSS v4 for styling, with design tokens defined once in its `@theme` block.
 - pnpm as the package manager, on Node 24 LTS.
-- ESLint for code quality and Prettier for formatting.
+- ESLint for code quality and Prettier for formatting. Every rule and the reason behind it is
+  documented in [`docs/code-style.md`](docs/code-style.md).
+
+## Commands
+
+| Command          | What it does                                              |
+| ---------------- | --------------------------------------------------------- |
+| `pnpm dev`       | Start the dev server                                      |
+| `pnpm build`     | Build the static site into `dist/`                        |
+| `pnpm check`     | Format check, lint and type check (runs before each push) |
+| `pnpm lint-fix`  | Fix every auto-fixable lint problem                       |
+| `pnpm format`    | Format every file with Prettier                           |
+| `pnpm typecheck` | Type check `.ts`, `.tsx` and `.astro` files               |
 
 ## How we work together
 
@@ -47,7 +59,7 @@ guessing.
 - Write senior-engineer-level code: small focused units with one responsibility, clear names,
   early returns over deep nesting, pure functions where possible, separation of data, logic
   and presentation.
-- Comments explain *why*, never *what*. Only comment what is not self-explanatory.
+- Comments explain _why_, never _what_. Only comment what is not self-explanatory.
 - Handle errors where they can actually happen. No defensive checks for impossible cases.
 - Keep changes focused on the task. Don't refactor unrelated code without asking first.
 
@@ -110,8 +122,8 @@ Security is a top priority for this project.
 
 ### Commit message format
 
-[Conventional Commits](https://www.conventionalcommits.org/), enforced by a local hook and in
-CI:
+[Conventional Commits](https://www.conventionalcommits.org/), checked by the `commit-msg` hook
+(`commitlint.config.ts`):
 
 ```
 <type>(<optional scope>)<optional !>: <description>
@@ -132,7 +144,7 @@ CI:
 
 A change is done only when all of these hold:
 
-1. Lint, formatter, type check, tests and build all pass locally, with no new warnings.
+1. `pnpm check`, the tests and `pnpm build` all pass locally, with no warnings.
 2. The diff has been read back in full: no duplication, dead code, debug output or unrelated
    changes.
 3. New logic has tests. User-facing changes are checked in the browser (desktop and mobile)
