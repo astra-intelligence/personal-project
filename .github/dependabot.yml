@@ -13,3 +13,22 @@ updates:
     commit-message:
       prefix: ci
     labels: [ci]
+
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 7
+    # Minor and patch updates arrive as one PR; each major update gets its own PR to review.
+    groups:
+      npm:
+        patterns: ['*']
+        update-types: [minor, patch]
+    ignore:
+      # TypeScript stays on 6.x until its tooling supports 7 (see docs/code-style.md).
+      - dependency-name: typescript
+        update-types: ['version-update:semver-major']
+    commit-message:
+      prefix: chore
+    labels: [chore]

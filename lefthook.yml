@@ -18,12 +18,6 @@ commit-msg:
 pre-push:
   jobs:
     - name: branch name
-      run: |
-        branch="$(git rev-parse --abbrev-ref HEAD)"
-        pattern='^(feat|fix|docs|style|refactor|perf|test|build|ci|chore|revert)/[0-9]+-[a-z0-9]+(-[a-z0-9]+)*$'
-        if ! printf '%s' "$branch" | grep -Eq "$pattern"; then
-          echo "Branch '$branch' must match <type>/<issue>-<short-description>, e.g. feat/12-hero-section"
-          exit 1
-        fi
+      run: scripts/check-branch-name.sh "$(git rev-parse --abbrev-ref HEAD)"
     - name: check
       run: pnpm check

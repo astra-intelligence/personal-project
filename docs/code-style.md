@@ -99,7 +99,8 @@ Branch names must match `<type>/<issue>-<short-description>`, e.g. `feat/12-hero
 types are the same as the commit types.
 
 Hooks run on your machine and could be skipped with `--no-verify`. That is never allowed
-(see `CLAUDE.md`), and CI will run the same checks on GitHub where they cannot be skipped.
+(see `CLAUDE.md`), and CI runs the same checks on GitHub where they cannot be skipped
+(`.github/workflows/`).
 
 ## Editor setup
 
